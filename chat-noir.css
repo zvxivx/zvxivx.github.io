@@ -1,0 +1,100 @@
+.spot {
+    fill: white;
+    stroke: white;
+    stroke-width: 0;
+}
+
+.spot.blocked {
+    fill: grey;
+}
+
+.spot.cat {
+    fill: pink;
+}
+
+.spot:hover {
+    stroke: black;
+    stroke-width: 5;
+}
+
+.spot.blocked:hover,
+.spot.cat:hover {
+    stroke-width: 0;
+}
+
+.debug {
+    text-anchor: middle;
+    fill: darkblue;
+    font-size: 70%;
+    font-family: sans-serif;
+}
+
+svg { 
+    background-color: lightblue;
+    border-radius: 50px;
+}
+
+#reset-button {
+    font-size: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* 如果你想精确控制按钮大小，试试设置宽度和高度 */
+    width: auto;                    /* 自动宽度，根据内容调整 */
+    height: 35px;                   /* 设置高度 */
+	margin: 8px 0 10px 0; /* 上 20px，右 0px，下 15px，左 0px */
+}
+
+#reset-button:hover {
+    background-color: #ff5c57;
+}
+
+/* 游戏结果动画容器 */
+.game-result {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-size: 1.3rem;
+    font-family: sans-serif;
+    padding: 20px 40px;
+    border-radius: 10px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    text-align: center;
+    z-index: 999;
+}
+
+/* 动画效果: 渐变和缩放 */
+.game-result.show {
+    display: block;
+    opacity: 1;
+    animation: scaleIn 0.5s ease-out forwards;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+#result-message {
+    margin: 0;
+}
+
+/* 父容器的定位: 相对于父容器定位 .game-result */
+#board-container {
+    position: relative;  /* 确保子元素可以相对于它定位 */
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;  /* 居中整个游戏板 */
+}
